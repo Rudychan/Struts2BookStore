@@ -1,0 +1,57 @@
+	#frame {/*----------鍥剧墖杞挱鐩告瀹瑰櫒----------*/
+			margin-left:300px;
+			margin-top:20px;
+			position: absolute; /*--缁濆瀹氫綅锛屾柟渚垮瓙鍏冪礌鐨勫畾浣�*/
+			width: 1000px;
+			height: 320px;
+			overflow: hidden;/*--鐩告浣滅敤锛屽彧鏄剧ず涓�涓浘鐗�---*/
+			border-radius:5px;
+		}
+
+		#photos img {
+			float: left;
+			width:1000px;
+			height:320px;
+		}
+		#photos {/*---璁剧疆鎬荤殑鍥剧墖瀹藉害--閫氳繃浣嶇Щ鏉ヨ揪鍒拌疆鎾晥鏋�----*/
+			position: absolute;z-index:9px;
+			width: calc(1000px * 4);/*---淇敼鍥剧墖鏁伴噺鐨勮瘽闇�瑕佷慨鏀逛笅闈㈢殑鍔ㄧ敾鍙傛暟*/
+		}
+		.play{
+			animation: ma 20s ease-out infinite alternate;/**/
+		}
+		@keyframes ma {/*---姣忓浘鐗囧垏鎹㈡湁涓や釜闃舵锛氫綅绉诲垏鎹㈠拰闈欑疆銆備腑闂寸殑鏁堟灉鍙互浠绘剰瀹氬埗----*/
+			0%,25% {		margin-left: 0px;		}
+			25%,50% {		margin-left: -1000px;	}
+			50%,75% {		margin-left: -2000px;	}
+			75%,100% {		margin-left: -3000px;	}
+			
+		}
+		.num{
+			position:absolute;z-index:10;
+			display:inline-block;
+			right:10px;top:290px;
+			border-radius:100%;
+			background:#fff;
+			width:25px;height:25px;
+			line-height:25px;
+			cursor:pointer;
+			color:#fff;
+			text-align:center;
+			opacity:0.8;
+		}
+		.num:hover{background:#00f;}
+		.num:hover,#photos:hover{animation-play-state:paused;}
+		.num:nth-child(2){margin-right:30px}
+		.num:nth-child(3){margin-right:60px}
+		.num:nth-child(4){margin-right:90px}
+	
+		#a1:hover ~ #photos{animation: ma1 .5s ease-out forwards;}
+		#a2:hover ~ #photos{animation: ma2 .5s ease-out forwards;}
+		#a3:hover ~ #photos{animation: ma3 .5s ease-out forwards;}
+		#a4:hover ~ #photos{animation: ma4 .5s ease-out forwards;}
+	
+		@keyframes ma1 {0%{margin-left:-3000px;}100%{margin-left:-0px;}	}
+		@keyframes ma2 {0%{margin-left:-3000px;}100%{margin-left:-1000px;}	}
+		@keyframes ma3 {100%{margin-left:-2000px;}	}
+		@keyframes ma4 {100%{margin-left:-3000px;}	}

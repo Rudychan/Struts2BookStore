@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+    
+<struts>
+ <!-- 当struts.xml改动后，是否重新加载。默认值为false(生产环境下使用),开发阶段最好打开  --> 
+    <constant name="struts.configuration.xml.reload" value="true"/> 
+    <!--配置Convention 插件自动重加载映射 -->
+    <constant name="struts.convention.classes.reload" value="true"/>
+    
+    
+	<package name="user" extends="struts-default">
+		
+		<action name="login" class="com.xrq.strutsBook.service.Login" method="login">
+		<result name="success">loginResult.jsp</result>
+		<result name="error">errorPage.jsp</result> 
+		<result name="toPay">pay.jsp</result>
+		</action>
+		
+		<action name="detail" class="com.xrq.strutsBook.service.ShowBook" method="detail">
+		<result name="success">detail.jsp</result>
+		<result name="error">errorPage.jsp</result>
+		</action>
+		
+		<action name="toCart" class="com.xrq.strutsBook.service.MyCart" method="addToCart">
+		<result name="success" type="chain">detail</result>
+		<result name="error">errorPage.jsp</result> 
+		</action> 
+		
+		<action name="userVerify" class="com.xrq.strutsBook.service.Login" method="userVerify">
+		<result name="success" >loginResult.jsp</result>    
+		<result name="noLogin">login.jsp</result>  
+		</action> 
+		
+		<action name="showCart" class="com.xrq.strutsBook.service.MyCart" method="showCart">
+		<result name="success">cart.jsp</result> 
+		<result name="error">nullPage.jsp</result>    
+		</action>  
+		
+		<action name="modifyCart" class="com.xrq.strutsBook.service.MyCart" method="modifyCart">
+		<result name="success" type="redirectAction">showCart</result> 
+		<result name="error">errorPage.jsp</result>  
+		</action>  
+		
+		<action name="delCartItem" class="com.xrq.strutsBook.service.MyCart" method="delCartItem">
+		<result name="success" type="redirectAction">showCart</result> 
+		<result name="error">errorPage.jsp</result>  
+		</action>  
+		
+		<action name="delCart" class="com.xrq.strutsBook.service.MyCart" method="delCart">
+		<result name="success" type="redirectAction">showCart</result> 
+		<result name="error">errorPage.jsp</result>   
+		</action>  
+		
+		<action name="paySystem" class="com.xrq.strutsBook.service.OrderSystem" method="paySystem">
+		<result name="toLogin">PayLogin.jsp</result> 
+		<result name="toPay" >pay.jsp</result>  
+		</action>  
+		
+		<action name="submitOrder" class="com.xrq.strutsBook.service.OrderSystem" method="submitOrder">
+		<result name="success">displayOrder.jsp</result> 
+		<result name="error" >errorPage.jsp</result>  
+		</action> 
+		
+		<action name="showOrder" class="com.xrq.strutsBook.service.OrderSystem" method="showOrder">
+		<result name="success">showOrder.jsp</result> 
+		<result name="error" >errorPage.jsp</result>  
+		</action> 
+		
+	</package>  
+</struts>
+
+<!-- <result name="success" type="redirectAction">list</result> -->
+<!-- 			<result name="login">/login.jsp</result> -->
